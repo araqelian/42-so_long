@@ -2,31 +2,47 @@ NAME = so_long
 
 CC = cc
 
-MLX = -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Wextra -Werror
 
-FLAGS = -Wall -Wextra -Werror
+SRCS = $(wildcard srcs/*.c)
 
+OBJFILE = objs
 
-RM = rm -f
+MLX = ./mlxLib
 
-SRC = $(wildcard srcs/*.c)
+OBJS = $(patsubst srcs/%.c, $(OBJFILE)/%.o, $(SRCS))
 
-OBJ = $(patsubst %c, %o, $(SRC))
+RM = rm -rf
 
-%.o: %.c
-	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+FMS = -lmlx -framework OpenGL -framework AppKit 
 
-all: $(NAME)
+MD = mkdir -p
 
-$(NAME): $(OBJ)
-	@$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(MLX)
+ifeq ($(shell uname -s), Linux)
+	MLX = minilibx-linux
+	FMS = -lmlx -lm -lX11 -lXext
+endif
+
+all: mlx $(OBJFILE) $(NAME)
+
+$(OBJFILE) :
+	@$(MD) $(OBJFILE)
+
+$(OBJFILE)/%.o : srcs/%.c Makefile so_long.h
+	@$(CC) -s $(CFLAGS) -I$(MLX) -c $< -o $@
+
+$(NAME): $(OBJS) Makefile
+	@$(CC) -s $(OBJS) $(CFLAGS) -L$(MLX) $(FMS) -o $(NAME)
+
+mlx:
+	@make -s -C $(MLX) >/dev/null 2>&1
 
 clean:
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJFILE)
 
 fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re mlx

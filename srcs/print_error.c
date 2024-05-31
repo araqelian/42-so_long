@@ -14,13 +14,13 @@
 
 void	print_error(char *str)
 {
-	char	*str_n;
-	char	*str_n_2;
+//	char	*str_n;
+//	char	*str_n_2;
 
-	str_n = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n---------------------------------------------\n";
-	str_n_2 = "---------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-	write(1, str_n, ft_strlen(str_n));
+//	str_n = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n---------------------------------------------\n";
+//	str_n_2 = "---------------------------------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+//	write(1, str_n, ft_strlen(str_n));
 	write(2, str, ft_strlen(str));
-	write(1, str_n_2, ft_strlen(str_n_2));
+//	write(1, str_n_2, ft_strlen(str_n_2));
 	exit(1);
 }

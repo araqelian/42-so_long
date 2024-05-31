@@ -18,19 +18,10 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "./mlx/mlx.h"
+# include <mlx.h>
+# include "./keys.h"
 
-# define BUFFER_SIZE 10
-
-# define UP		126		
-# define DOWN	125
-# define LEFT	123	
-# define RIGHT	124	
-# define W		13
-# define S		1
-# define A		0
-# define D		2
-# define ESC	53
+# define BUFFER_SIZE 30
 
 typedef struct s_size
 {
