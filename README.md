@@ -112,3 +112,11 @@ You&nbsp; will&nbsp; get &nbsp;extra&nbsp; points&nbsp; if &nbsp;you:
 <li>Add &nbsp;some &nbsp;sprite &nbsp;animation.
 <li>Display&nbsp; the &nbsp;movement &nbsp;count &nbsp;directly&nbsp; on&nbsp; screen &nbsp;instead&nbsp; of &nbsp;writing &nbsp;it &nbsp;in &nbsp;the &nbsp;shell.
 </ul>
+
+<br><br>
+
+> [!NOTE]  
+> Because of 42 School norm requirements:
+> * Each function can't have more than 25 lines of code.
+> * All variables are declared and aligned at the top of each function.
+> * Project should be created just with allowed functions otherwise it's cheating.
